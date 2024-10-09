@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load data
-df = pd.read_csv('Dashboard\data_siap (1).csv')
+df = pd.read_csv('Dashboard/data_siap (1).csv')
 
 # membuat bar navigasi
 nav_options = ["Beranda","Bulan", "Weathersit", "Tambahan"]
@@ -15,7 +15,7 @@ if nav_choice == "Beranda":
             st.title("Analisis Data Pengguna Sepeda")
             st.write("Selamat datang di analisis data pengguna sepeda!")
             st.write("Pilih jenis analisis data yang anda inginkan .")
-            st.image("Dashboard/naik_sepeda.jpg", use_column_width=True)  
+            st.image('Dashboard/naik_sepeda.jpg', use_column_width=True)  
             st.header("Pencarian Data jumlah pelanggan")                
             st.header("Filter Data yang diinginkan")
             bulan_filter = st.selectbox("Pilih Bulan", df["mnth"].unique())
