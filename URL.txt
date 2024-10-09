@@ -6,9 +6,9 @@ https://raw.githubusercontent.com/Nabilaanggita/dashboard_nabila/refs/heads/main
 https://raw.githubusercontent.com/Nabilaanggita/dashboard_nabila/refs/heads/main/data/day.csv
 
 file ipnyb
-https://colab.research.google.com/drive/1dhqM3pWuVE-JokFjwjxydGQEirH0fT4I?authuser=1#scrollTo=syeeP_Wwhfqh
+https://colab.research.google.com/drive/1dhqM3pWuVE-JokFjwjxydGQEirH0fT4I#scrollTo=CtoxDZT4jxcE
 
 URL Streamlit
-https://nabila-projek.streamlit.app/
+https://datanabila.streamlit.app/
 
 
