@@ -7,13 +7,28 @@ import seaborn as sns
 df = pd.read_csv('Dashboard/data_siap (1).csv')
 
 # membuat bar navigasi
-nav_options = ["Beranda","Bulan", "Weathersit", "Tambahan"]
-nav_choice = st.sidebar.selectbox("Pilih Analisis", nav_options)
-
+nav_buttons = st.columns(4)
+beranda_button = nav_buttons[0].button("Beranda")
+bulan_button = nav_buttons[1].button("Bulan")
+weathersit_button = nav_buttons[2].button("Weathersit")
+tambahan_button = nav_buttons[3].button("Tambahan")
+selected_button = None
+if beranda_button:
+    selected_button = "Beranda"
+elif bulan_button:
+    selected_button = "Bulan"
+elif weathersit_button:
+    selected_button = "Weathersit"
+elif tambahan_button:
+    selected_button = "Tambahan"
 #membuat halaman beranda
-if nav_choice == "Beranda":
+if selected_button == "Beranda":
             st.title("Analisis Data Pengguna Sepeda")
             st.write("Selamat datang di analisis data pengguna sepeda!")
+            st.write("pilih hasil visualisasi data pada button diatas")
+            st.write("button bulan menjawab pertanyaan 1 Bagaimana performa pengguna jasa sewa sepeda tiap bulannya?")
+            st.write("button weathersit menjawab pertanyaan 2 Bagaimana cuaca mempengaruhi kondisi perjalanan dan pengalaman pengguna saat bersepeda? ")
+
             st.write("Pilih jenis analisis data yang anda inginkan .")
             st.image('Dashboard/naik_sepeda.jpg', use_column_width=True)  
             st.header("Pencarian Data jumlah pelanggan")                
@@ -34,7 +49,7 @@ if nav_choice == "Beranda":
 
         
 
-elif nav_choice == "Bulan":
+elif selected_button == "Bulan":
             # Membuat kolom baru untuk tanggal
             df['dteday'] = pd.to_datetime(df['dteday'])
             df['weekday'] = df['dteday'].dt.day_name()
@@ -97,7 +112,7 @@ elif nav_choice == "Bulan":
             st.write("peforma pengguna naik turun namun cenderung meningkat . grafik tiap bulannya mengalami naik turun.terjadi penurunan yang sangat drastis pda bulan april. setelah saya analisis lebih lanjut dikarenakan faktor cuaca. kemudian pda saat bulan berikutnya meningkat terjadi penurunan namun tidak sedrastis pada bulan pertama.")
 
 
-elif nav_choice == "Weathersit":
+elif selected_button== "Weathersit":
             st.write("Bagaimana cuaca mempengaruhi kondisi perjalanan dan pengalaman pengguna saat bersepeda?")
             # Pertanyaan 2: Bagaimana cuaca mempengaruhi kondisi perjalanan dan pengalaman pengguna saat bersepeda?
             plt.style.use('dark_background')
@@ -119,7 +134,7 @@ elif nav_choice == "Weathersit":
             st.write(df.groupby(by="weathersit").nunique().sort_values(by='cnt', ascending=True))
             st.write("cuaca sangat berpengaaruh terhadap peminat pengguna sepeda Ketika cuaca sangat buruk, hanya ada sedikit peminat pengguna sepeda. Ini mungkin karena mereka tidak ingin mengambil risiko terjadi sesuatu yang buruk. ini hal wajar bahwa penurunan permintaan selama cuaca buruk dan cuaca adalah faktor eksternal yang mungkin kita tidak bisa atur. Menggunakan sepeda saat cuaca buruk dapat meningkatkan risiko kecelakaan atau kerusakan pada sepeda.")
 
-elif nav_choice == "Tambahan":
+elif selected_button == "Tambahan":
             st.header("Analisis Data")
             st.write(df)
             
