@@ -59,26 +59,17 @@ elif selected_button == "Bulan":
             # Membuat dashboard
             st.title("Analisis Data Pengguna Sepeda tiap bulannya")
             st.write("Bagaimana performa pengguna jasa sewa sepeda tiap bulannya?")
-            st.write (df)
 
             # Pertanyaan 1: Bagaimana performa pengguna jasa sewa sepeda tiap bulannya?
-            plt.style.use('dark_background')
             st.header("Performa Pengguna Jasa Sewa Sepeda Tiap Bulannya")
             st.write("Grafik persewaan sepeda tiap bulannya pada tahun 2011-2012")
-            fig, ax = plt.subplots(figsize=(10, 6))
+            plt.figure(figsize=(10,6))
             sns.lineplot(x="dteday", y="cnt", data=df, color='blue')
-            ax.set_xlabel("Tanggal")
-            ax.set_ylabel("Total Penyewa")
-            ax.set_title("Grafik Persewaan Sepeda Tiap Bulannya pada Tahun 2011-2012")
-            ax.set_facecolor('black')  
-            ax.grid(color='white')  
-            ax.tick_params(axis='x', colors='white')  
-            ax.tick_params(axis='y', colors='red')  
-            ax.spines['bottom'].set_color('yellow') 
-            ax.spines['top'].set_color('white') 
-            ax.spines['right'].set_color('yellow') 
-            ax.spines['left'].set_color('yellow')
-            st.pyplot(fig)
+            plt.xlabel("Tanggal")
+            plt.ylabel("Total penyewa")
+            plt.title("grafik persewaan sepeda tiap bulannya pada tahun 2011-2012")
+            plt.tight_layout()
+            plt.show() 
 
 
             # Tabel data bulan
@@ -90,16 +81,16 @@ elif selected_button == "Bulan":
             mean_df.columns = ["_".join(col) for col in mean_df.columns.values]
 
             # Grafik rata-rata pengguna sepeda tiap bulannya
-            fig, ax = plt.subplots(figsize=(10, 6))
+            plt.figure(figsize=(10,6))
             sns.lineplot(x=mean_df.index, y=mean_df["cnt_mean"], color='blue')
             sns.lineplot(x=mean_df.index, y=mean_df["cnt_std"], color='red')
             sns.lineplot(x=mean_df.index, y=mean_df["cnt_max"], color='green')
             sns.lineplot(x=mean_df.index, y=mean_df["cnt_min"], color='yellow')
-            ax.set_xlabel("Bulan")
-            ax.set_ylabel("Total Penyewa")
-            ax.set_title("Grafik Rata-Rata Pengguna Sepeda Tiap Bulannya")
-            st.pyplot(fig)
-
+            plt.xlabel("bulan")
+            plt.ylabel("Total penyewa")
+            plt.title("rata grafik persewaan sepeda tiap bulannya pada tahun 2011-2012")
+            plt.tight_layout()
+            plt.show()
 
 
             # Data urut terbanyak penyewa berdasarkan bulan
@@ -115,16 +106,14 @@ elif selected_button == "Bulan":
 elif selected_button== "Weathersit":
             st.write("Bagaimana cuaca mempengaruhi kondisi perjalanan dan pengalaman pengguna saat bersepeda?")
             # Pertanyaan 2: Bagaimana cuaca mempengaruhi kondisi perjalanan dan pengalaman pengguna saat bersepeda?
-            plt.style.use('dark_background')
-            st.header("Cuaca dan Pengguna Sepeda")
-            st.write("Grafik persewaan sepeda berdasarkan cuaca")
-            fig, ax = plt.subplots(figsize=(20, 10))
-            sns.barplot(x="weathersit", y="cnt", data=df, color='blue')
-            ax.set_xlabel("wcuaca")
-            ax.set_ylabel("Total Penyewa")
-            ax.set_title("Grafik Persewaan Sepeda Berdasarkan Cuaca")
-            st.pyplot(fig)
-
+            plt.figure(figsize=(10,6))
+            sns.barplot(x="weathersit", y="cnt", data=df)
+            plt.xlabel("weathersit")
+            plt.ylabel("Total pesepeda")
+            plt.title("hitung Pesepeda berdasarkan cuaca")
+            plt.xticks(rotation=15, ha='right')
+            plt.tight_layout()  # Adjust spacing to prevent labels from being cut off
+            plt.show()
             # Data urut terbanyak penyewa berdasarkan weathersit
             st.write("Data Urut Terbanyak Penyewa Berdasarkan Cuaca")
             st.write(df.groupby(by="weathersit").nunique().sort_values(by='cnt', ascending=False))
