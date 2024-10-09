@@ -1,0 +1,14 @@
+
+file raw data
+link dev raw data 
+https://raw.githubusercontent.com/Nabilaanggita/dashboard_nabila/refs/heads/main/data/hour.csv
+
+https://raw.githubusercontent.com/Nabilaanggita/dashboard_nabila/refs/heads/main/data/day.csv
+
+file ipnyb
+https://colab.research.google.com/drive/1dhqM3pWuVE-JokFjwjxydGQEirH0fT4I?authuser=1#scrollTo=syeeP_Wwhfqh
+
+URL Streamlit
+https://nabila-projek.streamlit.app/
+
+
